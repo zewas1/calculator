@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -7,26 +9,43 @@ public class Main {
 
     public static void main(String[] args) {
         int selection = 0;
-
+        List<Double> resultHistory = new ArrayList<Double>();
+        double result = 0;
 
         do {
-            selection = getSelection();
+            try {
+                selection = getSelection();
 
-            if (selection == 1) {
-                calculationData();
-                System.out.println("Your result is: " + Calculator.Sum(x, y));
-            } else if (selection == 2) {
-                calculationData();
-                System.out.println("Your result is: " + Calculator.Subtract(x, y));
-            } else if (selection == 3) {
-                calculationData();
-                System.out.println("Your result is: " + Calculator.Multiplication(x, y));
-            } else if (selection == 4) {
-                calculationData();
-                System.out.println("Your result is: " + Calculator.Division(x, y));
+                if (selection == 1) {
+                    calculationData();
+                    result = Calculator.Sum(x, y);
+                    resultFinal(resultHistory, result);
+                } else if (selection == 2) {
+                    calculationData();
+                    result = Calculator.Subtract(x, y);
+                    resultFinal(resultHistory, result);
+                } else if (selection == 3) {
+                    calculationData();
+                    result = Calculator.Multiplication(x, y);
+                    resultFinal(resultHistory, result);
+                } else if (selection == 4) {
+                    calculationData();
+                    result = Calculator.Division(x, y);
+                    resultFinal(resultHistory, result);
+                }
+                else if (selection == 5){
+                    System.out.println(resultHistory);
+                }
+            } catch (Exception e){
+                System.out.println("Please use numbers for inserting any data");
             }
-        } while (selection != 5);
+        } while (selection != 6);
 
+    }
+
+    private static void resultFinal(List<Double> resultHistory, double result) {
+        System.out.println("Your result is: " + result);
+        resultHistory.add(result);
     }
 
     private static int getSelection() {
@@ -39,7 +58,8 @@ public class Main {
         System.out.println("* 2 Count subtraction                   *");
         System.out.println("* 3 Count multiplication                *");
         System.out.println("* 4 Count division                      *");
-        System.out.println("* 5 Exit                                *");
+        System.out.println("* 5 Result History                      *");
+        System.out.println("* 6 Exit                                *");
         System.out.println("*****************************************");
         selection = Integer.parseInt(scan.next());
         return selection;
