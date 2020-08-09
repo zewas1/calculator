@@ -1,7 +1,7 @@
 public class Calculator {
 
-    public static int x = 0;
-    public static int y = 0;
+    private static int x = 0;
+    private static int y = 0;
 
     public static int Sum() {
         return x + y;

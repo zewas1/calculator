@@ -43,13 +43,15 @@ public class Menu {
 
     private static void resultFinal(List<Double> resultHistory, double result) {
         System.out.println("Your result is: " + result);
-        //System.out.println("Save data? 1. yes 2. no");
-        //int selection = Integer.parseInt(scan.next());
-        //if (selection == 1){
+        /*
+        System.out.println("Save data? 1. yes 2. no");
+        int selection = Integer.parseInt(scan.next());
+        if (selection == 1){
+        } else {
+            System.out.println("Data is not saved.");
+        }
+         */
         resultHistory.add(result);
-        //} else {
-        //    System.out.println("Data is not saved.");
-        //}
     }
 
     private static int getSelection() {
